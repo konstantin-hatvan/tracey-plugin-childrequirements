@@ -1,6 +1,6 @@
 {
     "name": "tracey-plugin-childrequirements",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Plugin to organize requirements in a parent-child relationship",
     "main": "index.js",
     "repository": {
