@@ -1,0 +1,27 @@
+{
+    "name": "tracey-plugin-parent",
+    "version": "0.0.1",
+    "description": "Plugin to organize requirements in a parent-child relationship",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/konstantin-hatvan/tracey-plugin-parent.git"
+    },
+    "keywords": [
+        "tracey",
+        "plugin"
+    ],
+    "author": "Konstantin Hatvan",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/konstantin-hatvan/tracey-plugin-parent/issues"
+    },
+    "homepage": "https://github.com/konstantin-hatvan/tracey-plugin-parent#readme",
+    "dependencies": {
+        "unist-util-visit": "2.0.3",
+        "mdast-builder": "1.1.1"
+    },
+    "scripts": {
+        "postversion": "git push && git push --tags"
+    }
+}
