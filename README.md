@@ -1,9 +1,10 @@
 # tracey-plugin-childrequirements
 
-Allows linking requirements in a parent-child relationship by using the frontmatter key `parent`.
 Generates a table of child requirements for each parent.
 
 ## Usage
+
+Link requirements in a parent-child relationship using the frontmatter key `parent`.
 
 ### Installation
 
@@ -22,7 +23,17 @@ const ChildrequirementsPlugin = require('tracey-plugin-childrequirements');
 
 module.exports = {
     plugins: [
-        ChildrequirementsPlugin(),
+        ChildrequirementsPlugin({ /* configuration options */ }),
     ],
 };
 ```
+
+### Plugin configuration
+
+The configuration object has the following options
+
+#### property
+
+**Default**: `parent`
+
+Use this option to configure the frontmatter key for linking requirements
