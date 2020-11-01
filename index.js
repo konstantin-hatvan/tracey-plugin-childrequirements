@@ -67,9 +67,18 @@ const plugin = (configuration) => ({ requirements, tracelinks, annotations }) =>
         return removeChildrequirements(theRequirement);
     });
 
+    const updatedTracelinks = tracelinks.map(theTracelink => {
+        const updatedRequirement = updatedRequirements.find(theRequirement => theRequirement.id === theTracelink.destination.id);
+
+        return {
+            destination: updatedRequirement,
+            annotation: theTracelink.annotation,
+        };
+    });
+
     return {
         requirements: updatedRequirements,
-        tracelinks,
+        tracelinks: updatedTracelinks,
         annotations,
     };
 };
