@@ -2,6 +2,10 @@ const path =  require('path');
 const visit  = require('unist-util-visit');
 const { link, text, tableCell, tableRow, table, html } = require('mdast-builder');
 
+const defaultConfiguration = {
+    property: 'parent',
+};
+
 const createChildRequirementsTable = (requirement, childRequirements) => {
     const tableRows = childRequirements.map(childRequirement => {
         const relativeLink = path.relative(path.parse(requirement.file).dir, childRequirement.file);
@@ -56,9 +60,9 @@ const removeChildrequirements = (original) => {
     return requirement;
 };
 
-const plugin = (configuration) => ({ requirements, tracelinks, annotations }) => {
+const plugin = (configuration = defaultConfiguration) => ({ requirements, tracelinks, annotations }) => {
     const updatedRequirements = requirements.map(theRequirement => {
-        const childRequirements = requirements.filter(aRequirement => Object.hasOwnProperty.call(aRequirement, 'parent') && aRequirement.parent === theRequirement.id);
+        const childRequirements = requirements.filter(aRequirement => Object.prototype.hasOwnProperty.call(aRequirement, configuration.property) && aRequirement.parent === theRequirement.id);
 
         if (childRequirements.length) {
             return updateChildrequirements(theRequirement, childRequirements);
