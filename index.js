@@ -60,7 +60,7 @@ const removeChildrequirements = (original) => {
     return requirement;
 };
 
-const plugin = (configuration = defaultConfiguration) => ({ requirements, tracelinks, annotations }) => {
+const plugin = (configuration = defaultConfiguration) => ({ requirements, annotations }) => {
     const updatedRequirements = requirements.map(theRequirement => {
         const childRequirements = requirements.filter(aRequirement => Object.prototype.hasOwnProperty.call(aRequirement, configuration.property) && aRequirement.parent === theRequirement.id);
 
@@ -71,18 +71,8 @@ const plugin = (configuration = defaultConfiguration) => ({ requirements, tracel
         return removeChildrequirements(theRequirement);
     });
 
-    const updatedTracelinks = tracelinks.map(theTracelink => {
-        const updatedRequirement = updatedRequirements.find(theRequirement => theRequirement.id === theTracelink.requirement.id);
-
-        return {
-            requirement: updatedRequirement,
-            annotation: theTracelink.annotation,
-        };
-    });
-
     return {
         requirements: updatedRequirements,
-        tracelinks: updatedTracelinks,
         annotations,
     };
 };
