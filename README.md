@@ -23,7 +23,7 @@ const ChildrequirementsPlugin = require('tracey-plugin-childrequirements');
 
 module.exports = {
     plugins: [
-        ChildrequirementsPlugin({ /* configuration options */ }),
+        ChildrequirementsPlugin.plugin({ /* configuration options */ }),
     ],
 };
 ```
